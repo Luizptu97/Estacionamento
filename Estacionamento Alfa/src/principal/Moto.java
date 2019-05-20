@@ -11,6 +11,10 @@ public class Moto extends Veiculo {
 		this.cilindradas = cilindradas;
 	}
 
+	public Moto() {
+		
+	}
+	
 	public float getCilindradas() {
 		return cilindradas;
 	}

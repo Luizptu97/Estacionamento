@@ -71,7 +71,10 @@ public class GerenciaCliente {
          while (clientesIterator.hasNext()){
                 Cliente it = clientesIterator.next();   
                 it.imprimir();
+                
+                
          }
+         clientesIterator = null;
 	}
 	
 	
