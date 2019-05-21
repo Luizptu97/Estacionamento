@@ -14,13 +14,21 @@ public class Main {
 		
 
 		do {
+			try{
 		    System.out.println("~~~~~~~~~~|Menu Principal|~~~~~~~~~~");
 			System.out.println("1 - Clientes");
 			System.out.println("2 - Patios");
 			System.out.println("3 - Veiculos");
 			System.out.println("4 - Conta");
 			System.out.println("0 - Sair");
-			op = sc.nextInt();
+			OP = sc.nextString();
+			
+			String OP = op;
+			op=Integer.parseInt(OP); break;
+		   		}catch(NumberFormatException ex){
+				System.out.println("ERRO! Digite um número!");
+				continue;
+           		 }
 			switch(op) {
 			case 1:
 				do {
@@ -29,7 +37,7 @@ public class Main {
 				 System.out.println("2 - Alterar cliente");
 				 System.out.println("3 - Excluir cliente");
 				 System.out.println("4 - Consultar cliente");
-				 System.out.println("5 - Relat�rio");
+				 System.out.println("5 - Relatório");
 				 System.out.println("0 - Voltar");
 				 opCli = sc.nextInt();
 				 switch(opCli) {
