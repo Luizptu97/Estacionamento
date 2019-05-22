@@ -2,6 +2,7 @@ package principal;
 
 import java.util.*;
 
+
 public class GerenciaVeiculo {
 
 	private ArrayList<Veiculo> veics;
@@ -29,7 +30,7 @@ public class GerenciaVeiculo {
 				System.out.println("4 - Ônibus");
 				System.out.println("0 - Sair do cadastro de veículo");
 				String tipoV = sc.nextLine();
-
+				
 				try {
 					tipoVeiculo = Integer.valueOf(tipoV).intValue();
 					teste = false;
@@ -42,8 +43,10 @@ public class GerenciaVeiculo {
 		}while(tipoVeiculo < 1 || tipoVeiculo > 4);
 		if(tipoVeiculo == 0) {
 			System.out.println("Cadastro de veículo cancelado");
+			
 		}else {
 					do {
+						teste = false;
 						System.out.println("Informe a placa do veículo: ");
 						placa = sc.nextLine();
 						for (Veiculo veiculos : veics) {
@@ -63,6 +66,7 @@ public class GerenciaVeiculo {
 		
 		if(OPCAO != "0") {
 							do {
+								teste = false;
 								System.out.println("Informe o chassi do veículo: ");
 								chassi = sc.nextLine();
 								for (Veiculo veiculos : veics) {
@@ -205,7 +209,22 @@ public class GerenciaVeiculo {
 		
 		
 		
+	public void relatorio() {
+		Iterator<Veiculo> it = veics.iterator();
+		Veiculo v;
 		
+		if(veics.isEmpty()) {	
+			System.out.println("Nao existe veiculos cadastrados no momento");
+		}else {
+			while(it.hasNext())
+			{	
+				v = it.next();
+				v.imprimir();
+			}
+		}	
+		v = null;
+	}
+			
 		
 		
 		
