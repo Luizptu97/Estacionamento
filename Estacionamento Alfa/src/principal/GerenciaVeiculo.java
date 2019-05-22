@@ -214,7 +214,7 @@ public class GerenciaVeiculo {
 		Veiculo v;
 		
 		if(veics.isEmpty()) {	
-			System.out.println("Nao existe veiculos cadastrados no momento");
+			System.out.println("Nao existem veiculos cadastrados no momento");
 		}else {
 			while(it.hasNext())
 			{	

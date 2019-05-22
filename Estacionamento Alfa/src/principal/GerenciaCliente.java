@@ -67,6 +67,9 @@ public class GerenciaCliente {
 	
 	
 	public void relatorio() {
+		if(cli.isEmpty()) {	
+			System.out.println("Nao existem clientes cadastrados no momento");
+		}else {
 		 Iterator<Cliente> clientesIterator = cli.iterator();
          while (clientesIterator.hasNext()){
                 Cliente it = clientesIterator.next();   
@@ -76,7 +79,7 @@ public class GerenciaCliente {
          }
          clientesIterator = null;
 	}
-	
+	}
 	
 	
 	
