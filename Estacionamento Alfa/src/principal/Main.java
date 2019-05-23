@@ -22,7 +22,9 @@ public class Main {
 		
 
 		do {
-			 System.out.println("~~~~~~~~~~|Menu Principal|~~~~~~~~~~");
+			do {
+				teste = false;
+			    System.out.println("~~~~~~~~~~|Menu Principal|~~~~~~~~~~");
 				System.out.println("1 - Clientes");
 				System.out.println("2 - Patios");
 				System.out.println("3 - Veiculos");
@@ -33,10 +35,9 @@ public class Main {
 				op=Integer.parseInt(OPS); 
 		   		}catch(NumberFormatException ex){
 				System.out.println("******** ERRO ******** \n Apenas número são permitidos \n\n");
-				op = 2603;
-				continue;
+				teste = true;
            		}
-
+			}while(teste);
 			switch(op) {
 			case 1:
 				do {
@@ -44,8 +45,7 @@ public class Main {
 				 System.out.println("1 - Cadastrar cliente");
 				 System.out.println("2 - Alterar cliente");
 				 System.out.println("3 - Excluir cliente");
-				 System.out.println("4 - Consultar cliente");
-				 System.out.println("5 - Relatório");
+				 System.out.println("4 - Relatório");
 				 System.out.println("0 - Voltar");
 				 opCli = sc.nextInt();
 				 sc.nextLine();
@@ -53,10 +53,17 @@ public class Main {
 				 case 1:
 					 gc.cadastrarCliente();
 					 break;
-				 case 5:
+				 case 2:
+					 // alterarcliente
+					 break;
+				 case 3:
+					 //excluircliente
+					 break;
+				 case 4:
 					 gc.relatorio();
 					 break;
 				 }
+				
 				}while(opCli != 0);
 				
 				break;
@@ -67,8 +74,7 @@ public class Main {
 					 System.out.println("1 - Cadastrar patio");
 					 System.out.println("2 - Alterar patio");
 					 System.out.println("3 - Excluir patio");
-					 System.out.println("4 - Consultar patio");
-					 System.out.println("5 - Relatório");
+					 System.out.println("4 - Relatório");
 					 System.out.println("0 - Voltar");
 					 opPat = sc.nextInt();
 					 sc.nextLine();
@@ -76,7 +82,13 @@ public class Main {
 					 case 1:
 						 gp.cadastrarPatio();
 						 break;
-					 case 5:
+					 case 2:
+						 //alterarpatio
+						 break;
+					 case 3:
+						 //excluirpatio
+						 break;
+					 case 4:
 						 gp.relatorio();
 						 break;
 					 }
@@ -89,8 +101,7 @@ public class Main {
 					 System.out.println("1 - Cadastrar veiculo");
 					 System.out.println("2 - Alterar veiculo");
 					 System.out.println("3 - Excluir veiculo");
-					 System.out.println("4 - Consultar veiculo");
-					 System.out.println("5 - Relatório");
+					 System.out.println("4 - Relatório");
 					 System.out.println("0 - Voltar");
 					 opCli = sc.nextInt();
 					 sc.hasNextLine();
@@ -98,7 +109,13 @@ public class Main {
 					 case 1:
 						 gv.cadastrarVeiculo();
 						 break;
-					 case 5:
+					 case 2:
+						 //alterarveiculo
+						 break;
+					 case 3:
+						 //excluirveiculo
+						 break;
+					 case 4:
 						 gv.relatorio();
 						 break;
 					 }
@@ -107,6 +124,12 @@ public class Main {
 				
 				break;
 			case 4: // CONTA
+				 System.out.println("~~~~~~~~~~|Menu Contas|~~~~~~~~~~");
+				 System.out.println("1 - Cadastrar conta");
+				 System.out.println("2 - Excluir conta");
+				 System.out.println("3 - Incrementar diárias de uma conta");
+				 System.out.println("4 - Pagar conta");
+				 System.out.println("0 - Voltar");
 				gco.cadastrarConta();
 				break;
 			case 2603:
@@ -114,8 +137,8 @@ public class Main {
 				break;
 				
 				default:
-					System.out.println("Opção inválida");
-					break;
+				System.out.println("Opção inválida");
+				break;
 			
 					
 			}
@@ -124,7 +147,7 @@ public class Main {
 
 		
 		
-		
+			
+	
 	}
-
 }

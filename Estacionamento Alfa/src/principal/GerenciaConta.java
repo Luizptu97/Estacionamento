@@ -222,8 +222,6 @@ public class GerenciaConta {
 					}
 					
 				}while(teste2);
-				
-				
 				Conta conta = new Conta();
 				conta.setVeiculo(veiculo);
 				conta.setPatio(patio);
@@ -232,10 +230,10 @@ public class GerenciaConta {
 				conta.setAno(ano);
 				conta.setDiarias(0);
 				conta.setPaga(false);
+				contas.add(conta);
 				
 			}
 		}
-		
 	}
 	
 	
@@ -246,7 +244,20 @@ public class GerenciaConta {
 	
 	
 	
-	
+	public void relatorio(){
+		if(contas.isEmpty()) {	
+			System.out.println("Nao existem contas cadastradas no momento");
+		}else {
+		 Iterator<Conta> contasIterator = contas.iterator();
+         while (contasIterator.hasNext()){
+                Conta it = contasIterator.next();   
+                it.imprimir();
+                
+                
+         }
+         contasIterator = null;
+		}
+	}
 	
 	
 	
