@@ -10,9 +10,11 @@ public class Main {
 		ArrayList<Cliente> clientes = new ArrayList<>();
 		ArrayList<Veiculo> veiculos = new ArrayList<>();
 		ArrayList<Patio> patios = new ArrayList<>();
+		ArrayList<Conta> contas = new ArrayList<>();
 		GerenciaCliente gc = new GerenciaCliente(clientes);
 		GerenciaVeiculo gv = new GerenciaVeiculo(veiculos);
 		GerenciaPatio gp = new GerenciaPatio(patios);
+		GerenciaConta gco = new GerenciaConta(contas, veiculos, clientes, patios);
 		int op = 0, opCli, opPat;
 		String OPS;
 		boolean teste = false;
@@ -91,6 +93,7 @@ public class Main {
 					 System.out.println("5 - Relatório");
 					 System.out.println("0 - Voltar");
 					 opCli = sc.nextInt();
+					 sc.hasNextLine();
 					 switch(opCli) {
 					 case 1:
 						 gv.cadastrarVeiculo();
@@ -104,7 +107,7 @@ public class Main {
 				
 				break;
 			case 4: // CONTA
-				
+				gco.cadastrarConta();
 				break;
 			case 2603:
 				System.out.println("\n");

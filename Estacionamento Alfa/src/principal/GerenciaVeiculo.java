@@ -35,7 +35,8 @@ public class GerenciaVeiculo {
 					tipoVeiculo = Integer.valueOf(tipoV).intValue();
 					teste = false;
 				}catch(NumberFormatException n) {
-					System.out.println("Por favor, informe apenas numeros");
+					System.out.println("             **************** ERRO FATAL ****************             ");
+					System.out.println("                  Por favor, informe apenas numeros                   ");
 				}catch(Exception e) {
 					System.out.println("Algo de errado aconteceu, tente novamente :( ");	
 				}
@@ -193,9 +194,6 @@ public class GerenciaVeiculo {
 						break;
 						}
 				
-			
-			
-			
 			}else {
 				System.out.println("Operação cancelada");
 			}
@@ -219,6 +217,19 @@ public class GerenciaVeiculo {
 			while(it.hasNext())
 			{	
 				v = it.next();
+				if(v instanceof Moto) {
+					System.out.println("Tipo de veiculo: Motocicleta");
+				}else {
+					if(v instanceof Carro) {
+						System.out.println("Tipo de veiculo: Carro");
+					}else {
+						if(v instanceof Caminhao) {
+							System.out.println("Tipo de veiculo: Caminhão");
+						}else {
+							System.out.println("Tipo de veículo: Onibus");
+						}
+					}
+				}
 				v.imprimir();
 			}
 		}	

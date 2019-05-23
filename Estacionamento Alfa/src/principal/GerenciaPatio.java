@@ -58,7 +58,7 @@ public class GerenciaPatio {
 								floatTeste = Float.parseFloat(stringTeste); 
 						   		}catch(NumberFormatException ex){
 						   		System.out.println("             **************** ERRO FATAL ****************             ");
-								System.out.println(" 				Por favor, insira um numero real. ");
+								System.out.println(" 				Por favor, insira um numero real.                     ");
 								teste = false;
 				           		}
 							}while(!teste);

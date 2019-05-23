@@ -10,6 +10,7 @@ public class GerenciaCliente {
 	private ArrayList<Cliente> cli;
 	private Scanner sc = new Scanner(System.in);
 	private int codigo;
+	private boolean achou, teste;
 	
 
 	public GerenciaCliente(ArrayList<Cliente> cli) {
@@ -25,15 +26,42 @@ public class GerenciaCliente {
 		LocalDate data;
 		
 		System.out.println("--------------- Cadastro de Clientes ---------------");
-		System.out.println("Digite o código que você deseja associar ao cliente: ");
-		codigo = sc.nextInt();
-		// ADD CONTROLE 
-		sc.nextLine();
+		achou = false;
+		do {
+		do {
+			teste = true;
+			System.out.println("Digite o código do cliente");
+			String cod = sc.nextLine();
+		try{
+			codigo = Integer.parseInt(cod); 
+	   		}catch(NumberFormatException ex){
+			System.out.println("\n                 ******** ERRO ********                  "); 
+			System.out.println("                 Apenas número são permitidos!!!           ");
+			teste = false;
+       		}
+		
+		}while(!teste);
+		
+		Iterator<Cliente> clientesIterator = cli.iterator();
+        while (clientesIterator.hasNext()){
+               Cliente it = clientesIterator.next();   
+               if(it.getCodigo() == codigo) {
+            	   achou = true;
+            	   System.out.println("                 ******** ERRO ********                ");
+            	   System.out.println("           O código do cliente já está em uso  ");
+               }  
+               
+        }
+        clientesIterator = null;
+        
+        
+		}while(achou);
+       
+		cliente.setCodigo(codigo);
 		System.out.println("Digite o nome do cliente: ");
 		cliente.setNome(sc.nextLine());
 		System.out.println("Digite o telefone do cliente: ");
 		cliente.setTelefone(sc.nextLine());
-		
 			System.out.println("      Endereço do cliente       ");
 			System.out.println("Digite o logradouro: ");
 			cliente.setLogradouro(sc.nextLine());
@@ -55,12 +83,13 @@ public class GerenciaCliente {
 					mes = sc.nextInt();
 					System.out.println("Digite o ano");
 					ano = sc.nextInt();
+					sc.nextLine();
 					data = LocalDate.of(ano, mes, dia); 
 					cliente.setDataCadastro(data);
-					
-		cli.add(cliente);
+					cli.add(cliente);
+        }
 		
-	}
+	
 	
 	
 	
