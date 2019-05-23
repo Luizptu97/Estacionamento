@@ -3,6 +3,7 @@ package principal;
 import java.util.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class GerenciaCliente {
 
@@ -11,7 +12,6 @@ public class GerenciaCliente {
 	private Scanner sc = new Scanner(System.in);
 	private int codigo;
 	private boolean achou, teste;
-	
 
 	public GerenciaCliente(ArrayList<Cliente> cli) {
 		this.cli = cli;
@@ -75,7 +75,8 @@ public class GerenciaCliente {
 			cliente.setEstado(sc.nextLine());
 			System.out.println("Digite o cep: ");
 			cliente.setCep(sc.nextLine());
-			
+			do {
+				teste = true;
 					System.out.println("Data de cadastro do cliente: ");
 					System.out.println("Digite o dia");
 					dia = sc.nextInt();
@@ -84,9 +85,24 @@ public class GerenciaCliente {
 					System.out.println("Digite o ano");
 					ano = sc.nextInt();
 					sc.nextLine();
-					data = LocalDate.of(ano, mes, dia); 
-					cliente.setDataCadastro(data);
-					cli.add(cliente);
+					/////////////////////////////////////////////////////////
+					try {
+						teste = true;
+						String sData = (ano+"-"+mes+"-"+dia); 
+				         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				         System.out.println(sData);
+				         data = LocalDate.parse(sData, formatter);    
+				         
+				      }catch(DateTimeParseException e) {
+				    	  System.out.println("     ******* DATA NÃO EXISTE **********          ");
+				        teste = false;
+				      }   
+				   
+			}while(!teste);
+			data = LocalDate.of(ano, mes, dia); 
+			
+			cliente.setDataCadastro(data);
+			cli.add(cliente);
         }
 		
 	
@@ -109,10 +125,6 @@ public class GerenciaCliente {
          clientesIterator = null;
 		}
 	}
-	
-	
-	
-	
 	
 	
 }

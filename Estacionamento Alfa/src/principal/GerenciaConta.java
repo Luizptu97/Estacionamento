@@ -1,4 +1,7 @@
 package principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class GerenciaConta {
@@ -9,9 +12,10 @@ public class GerenciaConta {
 	private ArrayList<Patio> patios;
 	private String placa, nomePatio, nomeCliente;
 	private Scanner sc = new Scanner(System.in);
-	boolean achou;
-	
-
+	boolean achou, teste2, opr;
+	private String mes, ano, opcao, diariaS;
+	int MES, ANO, diarias;
+	Conta conta;
 	
 	public GerenciaConta(ArrayList<Conta> contas, ArrayList<Veiculo> veiculos, ArrayList<Cliente> clientes,
 			ArrayList<Patio> patios) {
@@ -142,9 +146,6 @@ public class GerenciaConta {
 					
 					}while(!teste);
 					
-					
-					
-					
 					if(cod == 0) {
 						Iterator<Cliente> it = clientes.iterator();
 						Cliente c;
@@ -239,8 +240,203 @@ public class GerenciaConta {
 	
 	
 	
+	public void incrementaDiarias() {
+		int intTeste = 0;
+		String stringTeste = null;
+		boolean teste;
+		if(veiculos.isEmpty() || clientes.isEmpty() || patios.isEmpty()) {	
+			System.out.println("Você precisa ter ao menos 1 veiculo, 1 patio e 1 cliente cadastrados ");
+			System.out.println("             no sistema para poder gerar uma nova conta              ");
+		}else {
+		do {
+			teste = true;
+			System.out.println("Digite o código do cliente relacionado a conta");
+		try{
+			intTeste=Integer.parseInt(stringTeste); 
+	   		}catch(NumberFormatException ex){
+	   		System.out.println("             **************** ERRO FATAL ****************             ");
+			System.out.println("           O código do cliente precisa ser um numero inteiro          ");
+			teste = false;
+       		}
+		if(teste == true) {
+		if(validaCliente(intTeste) == false) {
+			teste = false;
+		}
+		}
+		}while(!teste);
 	
+	 do {
+		 System.out.println("Informe a placa do veículo relacionado a conta");
+		 placa = sc.nextLine();
+		 teste = validaCarro(placa);
+	 	}while(teste);
+		do {
+			teste = true;
+		System.out.println("Informe o mês de referência");
+		mes = sc.nextLine();
+		System.out.println("Informe o ano de referencia");
+		ano = sc.nextLine();
+		try {
+			MES = Integer.valueOf(mes).intValue();
+			ANO = Integer.valueOf(ano).intValue();
+			
+		} catch (NumberFormatException n) {
+			System.out.println("Por favor, informe apenas numeros");
+			teste = false;
+		} catch (Exception e) {
+			System.out.println("Algo de errado aconteceu, tente novamente :( ");
+			teste = false;
+		}
+		
+		}while(!teste);
+		}
+		teste = true;
+		for (Conta c : contas) {
+			if(c.getVeiculo().getPlaca().equalsIgnoreCase(placa) && (c.getCliente().getCodigo() == intTeste) && (c.getMes()==MES) && c.getAno() == ANO) {
+				Conta conta = c;
+			}else {
+				System.out.println(" ***** Não localizamos nenhuma conta com os dados informados ******");
+				teste = false;
+			}
+		}
+			if(teste != false) {
+				do {
+					teste2 = false;
+				do {
+					teste = false;
+					System.out.println("Digite quantas diárias você deseja incrementar");
+					String di = sc.nextLine();
+				try{
+					diarias = Integer.parseInt(di); 
+			   		}catch(NumberFormatException ex){
+					System.out.println("******** ERRO ******** \n Apenas número são permitidos \n\n");
+					teste = true;
+	           		}
+				}while(teste);
+				
+				if(conta.getDiarias() + diarias > 31) {
+					System.out.println("**** O numero de diárias ultrapassou o limite mensal, para isso crie uma nova conta no mês seguinte **** ");
+				}else {
+					conta.setDiarias(conta.getDiarias() + diarias);
+				}
+				}while(teste2);
+			}
 	
+	}
+	
+	public void pagaDiarias() {
+		int intTeste = 0;
+		String stringTeste = null;
+		boolean teste;
+		if(veiculos.isEmpty() || clientes.isEmpty() || patios.isEmpty()) {	
+			System.out.println("Você precisa ter ao menos 1 veiculo, 1 patio e 1 cliente cadastrados ");
+			System.out.println("             no sistema para poder gerar uma nova conta              ");
+		}else {
+		do {
+			teste = true;
+			System.out.println("Digite o código do cliente relacionado a conta");
+		try{
+			intTeste=Integer.parseInt(stringTeste); 
+	   		}catch(NumberFormatException ex){
+	   		System.out.println("             **************** ERRO FATAL ****************             ");
+			System.out.println("           O código do cliente precisa ser um numero inteiro          ");
+			teste = false;
+       		}
+		if(teste == true) {
+		if(validaCliente(intTeste) == false) {
+			teste = false;
+		}
+		}
+		}while(!teste);
+	
+	 do {
+		 System.out.println("Informe a placa do veículo relacionado a conta");
+		 placa = sc.nextLine();
+		 teste = validaCarro(placa);
+	 	}while(teste);
+		do {
+			teste = true;
+		System.out.println("Informe o mês de referência");
+		mes = sc.nextLine();
+		System.out.println("Informe o ano de referencia");
+		ano = sc.nextLine();
+		try {
+			MES = Integer.valueOf(mes).intValue();
+			ANO = Integer.valueOf(ano).intValue();
+			
+		} catch (NumberFormatException n) {
+			System.out.println("Por favor, informe apenas numeros");
+			teste = false;
+		} catch (Exception e) {
+			System.out.println("Algo de errado aconteceu, tente novamente :( ");
+			teste = false;
+		}
+		
+		}while(!teste);
+		}
+		teste = true;
+		for (Conta c : contas) {
+			if(c.getVeiculo().getPlaca().equalsIgnoreCase(placa) && (c.getCliente().getCodigo() == intTeste) && (c.getMes()==MES) && c.getAno() == ANO) {
+				Conta conta = c;
+			}else {
+				System.out.println(" ***** Não localizamos nenhuma conta com os dados informados ******");
+				teste = false;
+			}
+		}
+		
+			if(teste != false) {
+				do {
+					teste = false;
+				System.out.println(" Deseja pagar as diárias separadamente, ou quitar a conta?");
+				System.out.println("    1 - Pagar diárias avulsas   |   2 - Liquidar conta    ");
+				opcao = sc.nextLine();
+				try{
+					int SOP =Integer.parseInt(opcao); 
+			   		}catch(NumberFormatException ex){
+					System.out.println("******** ERRO ******** \n Opção inválida, apenas numeros são permitidos \n\n");
+					teste = true;
+	           		}
+			}while(teste);
+				do {
+			opr = false;
+				if(opcao == "1") {
+					do {
+						teste2 = true;
+						do {
+					teste = true;
+					System.out.println("Informe quantas diárias deseja pagar");
+					diariaS = sc.nextLine();
+					try{
+						diarias = Integer.parseInt(diariaS); 
+				   		}catch(NumberFormatException ex){
+						System.out.println("******** ERRO ******** \n Opção inválida, apenas numeros são permitidos \n\n");
+						teste = false;
+		           		}
+					}while(!teste);
+						if(diarias > conta.getDiarias()) {
+							System.out.println("Número informado maior que o débito de diárias");
+						}else {
+							teste2 = false;
+						}
+						
+						
+					}while(teste2);
+					conta.setDiarias(conta.getDiarias() - diarias);
+					opr = true;
+					
+				}else {
+					if(opcao == "2") {
+						conta.setDiarias(0);
+						conta.setPaga(true);
+						System.out.println("Conta Liquidada");
+						opr = true;
+					}else {
+					System.out.println("Opcao inválida");	
+					}
+				}
+				}while(!opr);
+			}
+			}
 	
 	
 	
@@ -260,6 +456,47 @@ public class GerenciaConta {
 	}
 	
 	
+	private boolean validaCarro(String placa) {
+				for (Veiculo veic : veiculos) {
+					if(veic.getPlaca().equalsIgnoreCase(placa)) {
+						achou = true;
+						}
+					}
+			if(achou == false) {
+				System.out.println(" ************** Placa não localizada **************");
+				return false;
+			}else {
+				return true;
+			}
+		}
 	
 	
-}
+	private boolean validaCliente(int codigo) {
+				for (Cliente cli : clientes) {
+					if(cli.getCodigo() == codigo) {
+						achou = true;
+						}
+					}
+			if(achou == false) {
+				System.out.println(" ************** Código de cliente não localizado **************");
+				return false;
+			}else {
+				return true;
+			}	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+	
+	
+	
+

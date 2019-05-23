@@ -15,7 +15,7 @@ public class Main {
 		GerenciaVeiculo gv = new GerenciaVeiculo(veiculos);
 		GerenciaPatio gp = new GerenciaPatio(patios);
 		GerenciaConta gco = new GerenciaConta(contas, veiculos, clientes, patios);
-		int op = 0, opCli, opPat;
+		int op = 0, opCli, opPat, opConta;
 		String OPS;
 		boolean teste = false;
 		Scanner sc = new Scanner(System.in);
@@ -124,29 +124,40 @@ public class Main {
 				
 				break;
 			case 4: // CONTA
-				 System.out.println("~~~~~~~~~~|Menu Contas|~~~~~~~~~~");
-				 System.out.println("1 - Cadastrar conta");
-				 System.out.println("2 - Excluir conta");
-				 System.out.println("3 - Incrementar diárias de uma conta");
-				 System.out.println("4 - Pagar conta");
-				 System.out.println("0 - Voltar");
-				gco.cadastrarConta();
-				break;
-			case 2603:
-				System.out.println("\n");
-				break;
-				
-				default:
-				System.out.println("Opção inválida");
-				break;
-			
-					
-			}
-			
-			}while(op != 0);
+				do {
+					System.out.println("~~~~~~~~~~|Menu Contas|~~~~~~~~~~");
+					System.out.println("1 - Cadastrar conta");
+					System.out.println("2 - Excluir conta");
+					System.out.println("3 - Incrementar diárias de uma conta");
+					System.out.println("4 - Pagar conta");
+					System.out.println("0 - Voltar");
+					opConta = sc.nextInt();
+					switch (opConta) {
+					case 1:
+						gco.cadastrarConta();
+						break;
+					case 2:
+						// excluir conta
+						break;
+					case 3:
+						// diasris conta
+					break;
+					case 4:
+						// pagar conta
+						break;
+					case 2603:
+						System.out.println("\n");
+						break;
+					default:
+						System.out.println("Opção inválida");
 
-		
-		
+						break;
+					}
+				} while (opConta != 0);
+				break;
+			}
+
+		} while (op != 0);
 			
 	
 	}
