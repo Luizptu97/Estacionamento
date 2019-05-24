@@ -7,7 +7,7 @@ public class GerenciaVeiculo {
 	private ArrayList<Veiculo> veics;
 	private Scanner sc = new Scanner(System.in);
 	private boolean teste;
-	private String OPCAO, placa, chassi, marca, modelo;
+	private String OPCAO = "1", placa, chassi, marca, modelo;
 	private int anoFabricacao, anoModelo, tipoVeiculo, port, pass;
 	private float cilind, carga;
 
@@ -65,7 +65,7 @@ public class GerenciaVeiculo {
 
 			if (OPCAO.equals("0")) {
 				System.out.println(" Operação cancelada");
-			}else {
+			} else {
 				do {
 					teste = false;
 					System.out.println("Informe o chassi do veículo: ");
@@ -206,10 +206,10 @@ public class GerenciaVeiculo {
 		if (veics.isEmpty()) {
 			System.out.println("Nao existem veiculos cadastrados no momento");
 		} else {
-			
+
 			boolean achou = false;
 			do {
-				
+
 				System.out.println("Informe a placa do veículo que deseja alterar: ");
 				System.out.println("Ou digite '0' para cancelar ");
 				placa = sc.nextLine();
@@ -219,7 +219,7 @@ public class GerenciaVeiculo {
 						veiculo = veiculos;
 					}
 				}
-				if (placa.equals("0")){
+				if (placa.equals("0")) {
 					achou = true;
 				}
 			} while (!achou);
@@ -419,10 +419,10 @@ public class GerenciaVeiculo {
 		if (veics.isEmpty()) {
 			System.out.println("Nao existem veiculos cadastrados no momento");
 		} else {
-			
+
 			boolean achou = false;
 			do {
-				
+
 				System.out.println("Informe a placa do veículo que deseja excluir: ");
 				System.out.println("Ou digite '0' para cancelar ");
 				placa = sc.nextLine();
@@ -432,7 +432,7 @@ public class GerenciaVeiculo {
 						veiculo = veiculos;
 					}
 				}
-				if (placa.equals("0")){
+				if (placa.equals("0")) {
 					achou = true;
 				}
 			} while (!achou);
@@ -442,24 +442,24 @@ public class GerenciaVeiculo {
 				veiculo.imprimir();
 				boolean feito = false;
 				do {
-				System.out.println("Deseja realmente excluir esse veículo?");
-				System.out.println("      1 - SIM      /       2 - NÃO    ");
-				String opc = sc.nextLine();
-				if(opc.equals("1")) {
-					veics.remove(veiculo);
-					feito = true;
-				}else {
-					if(opc.equals("2")) {
-						System.out.println("Exclusão cancelada");
+					System.out.println("Deseja realmente excluir esse veículo?");
+					System.out.println("      1 - SIM      /       2 - NÃO    ");
+					String opc = sc.nextLine();
+					if (opc.equals("1")) {
+						veics.remove(veiculo);
 						feito = true;
+					} else {
+						if (opc.equals("2")) {
+							System.out.println("Exclusão cancelada");
+							feito = true;
+						}
 					}
-				}
-				
-				}while(feito);
+
+				} while (feito);
 			}
-			}
+		}
 	}
-	
+
 	public void relatorio() {
 		Iterator<Veiculo> it = veics.iterator();
 		Veiculo v;

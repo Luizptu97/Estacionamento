@@ -241,8 +241,8 @@ public class GerenciaCliente {
 					cliente.imprimir();
 					System.out.println("Deseja realmente excluir esse cliente?");
 					System.out.println("     1 - SIM     |      2 - NÃO       ");
-					
-						op = sc.nextLine();
+
+					op = sc.nextLine();
 					if (op.equals("1")) {
 						cli.remove(cliente);
 						System.out.println("Exclusão realizada com sucesso");
