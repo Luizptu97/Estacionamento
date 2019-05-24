@@ -76,7 +76,7 @@ public class Conta {
 		System.out.println("        Cliente código "+ cliente.getCodigo());
 		System.out.println("         Nome:         "+ cliente.getNome());
 		System.out.println("Período de referencia: "+ mes + "/" + ano);
-		if(paga = true) {
+		if(paga == true) {
 		System.out.println("    $ Conta paga   ");
 		}else {
 		System.out.println("Ainda há " + diarias + " diarias pendentes aguardando pagamento.");

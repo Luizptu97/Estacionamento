@@ -16,7 +16,6 @@ public class GerenciaVeiculo {
 
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void cadastrarVeiculo() {
 		do {
 
@@ -58,13 +57,15 @@ public class GerenciaVeiculo {
 					System.out.println("essa placa já esta cadastrada no sistema");
 					System.out.println("*Digite 0 para sair ou qualquer outro digito para tentar novamente*");
 					OPCAO = sc.nextLine();
-					if (OPCAO == "0") {
+					if (OPCAO.equals("0")) {
 						teste = true;
 					}
 				}
 			} while (teste);
 
-			if (OPCAO != "0") {
+			if (OPCAO.equals("0")) {
+				System.out.println(" Operação cancelada");
+			}else {
 				do {
 					teste = false;
 					System.out.println("Informe o chassi do veículo: ");
@@ -196,13 +197,10 @@ public class GerenciaVeiculo {
 				} else {
 					System.out.println("Operação cancelada");
 				}
-			} else {
-				System.out.println("Operação cancelada");
 			}
 		}
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void alterar() {
 		Veiculo veiculo = null;
 		if (veics.isEmpty()) {
@@ -415,8 +413,7 @@ public class GerenciaVeiculo {
 			}
 		}
 	}
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	public void excluir() {
 		Veiculo veiculo = null;
 		if (veics.isEmpty()) {
@@ -449,7 +446,7 @@ public class GerenciaVeiculo {
 				System.out.println("      1 - SIM      /       2 - NÃO    ");
 				String opc = sc.nextLine();
 				if(opc.equals("1")) {
-					veiculo = null;
+					veics.remove(veiculo);
 					feito = true;
 				}else {
 					if(opc.equals("2")) {
@@ -463,9 +460,6 @@ public class GerenciaVeiculo {
 			}
 	}
 	
-	
-	
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void relatorio() {
 		Iterator<Veiculo> it = veics.iterator();
 		Veiculo v;

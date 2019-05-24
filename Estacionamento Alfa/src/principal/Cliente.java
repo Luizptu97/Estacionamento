@@ -90,7 +90,7 @@ public class Cliente {
 	
 	public void imprimir() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		System.out.println("Cliente código "+ codigo + " : ");
+		System.out.println("\n\nCliente código "+ codigo + " : ");
 		System.out.println("Nome: " + nome);
 		System.out.println("telefone: "+ telefone);
 		System.out.println("Dados de endereço");
@@ -98,6 +98,7 @@ public class Cliente {
 		System.out.println("Numero: " + numero);
 		System.out.println("Municipio: "+ municipio);
 		System.out.println("Data cadastro: "+ dataCadastro.format(formatter));
+		System.out.println("\n\n");
 		
 	}
 	
